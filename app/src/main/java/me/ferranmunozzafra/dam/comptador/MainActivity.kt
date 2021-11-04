@@ -76,6 +76,7 @@ class MainActivity : AppCompatActivity() {
       incrementScore()
     }
 
+
     if (savedInstanceState != null) {
       score = savedInstanceState.getInt(KEY_SCORE)
       timeLeftOnTimer = savedInstanceState.getLong(KEY_TIME_LEFT)
@@ -155,10 +156,14 @@ class MainActivity : AppCompatActivity() {
       startGame()
     }
 
+    val blinkAnimation = AnimationUtils.loadAnimation(this, R.anim.blink)
+
     score += 1
 
     val newScore = getString(R.string.yourScore, score)
     gameScoreTextView.text = newScore
+    gameScoreTextView.startAnimation(blinkAnimation)
+
   }
 
   private fun endGame() {
